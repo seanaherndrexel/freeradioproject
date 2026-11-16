@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: freeradioproject
+    runtime: static
+    buildCommand: echo "static site, no build"
+    staticPublishPath: ./
+    domains:
+      - freeradioproject.org
+      - freeradioproject.com
