@@ -109,9 +109,10 @@
     {id:'walk',name:'Walk-to-School Safety Group',group:'Safety',line:'A parent asking drivers to slow down near the elementary school.',raised:0}
   ];
   var groups=['All'].concat(causes.map(function(c){return c.group}).filter(function(g,i,a){return a.indexOf(g)===i}));
-  var state={amt:100,group:'All',sel:['rescue']};
+  var state={amt:100,group:'All',sel:['rescue'],freq:'once'};
   var chips=root.querySelector('.chips'), list=root.querySelector('.cause-list'), split=root.querySelector('.give-split');
   var form=document.getElementById('give-form'), custom=document.getElementById('give-custom'), done=root.querySelector('.give-done');
+  function per(){return state.freq==='monthly'?' a month':''}
   function money(n){return '$'+(Math.round(n*100)/100).toLocaleString('en-US',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2})}
   // Even split across chosen causes; anything a cause doesn't need rolls on to the others, then to the next cause in line.
   function allocate(){
@@ -140,7 +141,7 @@
     var rows=state.sel.map(function(id){var c=causes.filter(function(x){return x.id===id})[0], g=a.by[id]||0; return '<li><span>'+c.name+'</span><span'+(c.raised+g>=GOAL-0.005?' class="air">'+money(g)+' · on the air':'>'+money(g))+'</span></li>'}).join('');
     if(a.extra>0.005) rows+='<li><span>Next cause in line</span><span>'+money(a.extra)+'</span></li>';
     var aired=state.sel.filter(function(id){var c=causes.filter(function(x){return x.id===id})[0]; return c.raised<GOAL&&c.raised+(a.by[id]||0)>=GOAL-0.005}).length;
-    split.innerHTML=!state.amt?'Choose an amount to see where it goes.':(!state.sel.length?'<strong>'+money(state.amt)+'</strong> goes to whichever cause has waited longest. Choose causes on the left to direct it yourself.':'<strong>'+money(state.amt)+'</strong> split across '+state.sel.length+(state.sel.length===1?' cause':' causes')+(aired?', enough to put '+aired+(aired===1?' ad':' ads')+' on the air':'')+':<ul>'+rows+'</ul>');
+    split.innerHTML=!state.amt?'Choose an amount to see where it goes.':(!state.sel.length?'<strong>'+money(state.amt)+per()+'</strong> goes to whichever cause has waited longest. Choose causes on the left to direct it yourself.':'<strong>'+money(state.amt)+per()+'</strong> split across '+state.sel.length+(state.sel.length===1?' cause':' causes')+(aired?', enough to put '+aired+(aired===1?' ad':' ads')+' on the air':'')+':<ul>'+rows+'</ul>');
   }
   root.addEventListener('click',function(e){
     var t=e.target.closest('button'); if(!t) return;
@@ -148,6 +149,7 @@
     else if(t.dataset.id){var i=state.sel.indexOf(t.dataset.id); if(i>-1) state.sel.splice(i,1); else state.sel.push(t.dataset.id); draw()}
     else if(t.dataset.amt){state.amt=+t.dataset.amt; custom.value=''; [].forEach.call(root.querySelectorAll('.amounts button'),function(b){b.classList.toggle('on',b===t)}); draw()}
     else if(t.dataset.again){done.hidden=true; form.hidden=false; draw()}
+    else if(t.dataset.freq){state.freq=t.dataset.freq; [].forEach.call(root.querySelectorAll('.freq button'),function(b){b.classList.toggle('on',b===t)}); draw()}
   });
   custom.addEventListener('input',function(){var v=parseFloat(custom.value.replace(/[^0-9.]/g,'')); state.amt=isFinite(v)&&v>0?Math.min(v,100000):0; [].forEach.call(root.querySelectorAll('.amounts button'),function(b){b.classList.remove('on')}); draw()});
   form.addEventListener('submit',function(e){
@@ -156,11 +158,28 @@
     if(!n||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){st.textContent='Add your name and a valid email to preview your account.'; return}
     st.textContent=''; var a=allocate(), who=form.elements.organization.value.trim()||n;
     var esc=function(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML};
+    var ded=form.elements.dedicate.value, hon=form.elements.honoree.value.trim(); if(!hon) ded='';
     var rows=state.sel.map(function(id){var c=causes.filter(function(x){return x.id===id})[0], g=a.by[id]||0, pct=Math.min(100,Math.round((c.raised+g)/GOAL*100)); return '<li><span>'+c.name+'</span><span>'+money(g)+' · '+(pct>=100?'on the air':pct+'%')+'</span></li>'}).join('');
     if(!state.sel.length) rows='<li><span>Longest-waiting cause</span><span>'+money(state.amt)+'</span></li>';
     else if(a.extra>0.005) rows+='<li><span>Next cause in line</span><span>'+money(a.extra)+'</span></li>';
-    done.innerHTML='<h3>Your sponsor account</h3><p class="muted small"><strong>Preview only.</strong> No money was collected and nothing was saved.</p><div class="acct"><ul><li><span>Sponsor</span><span>'+esc(who)+'</span></li><li><span>Total given</span><span>'+money(state.amt)+'</span></li></ul></div><div class="acct"><ul>'+rows+'</ul></div><p class="muted small">Once we are live, this is where you would follow each cause, download your receipt and copy your sponsor badge.</p><button type="button" class="btn ghost" data-again="1">Change my gift</button>';
+    done.innerHTML='<h3>Your sponsor account</h3><p class="muted small"><strong>Preview only.</strong> No money was collected and nothing was saved.</p><div class="acct"><ul><li><span>Sponsor</span><span>'+esc(who)+'</span></li><li><span>'+(state.freq==='monthly'?'Monthly gift':'Total given')+'</span><span>'+money(state.amt)+per()+'</span></li>'+(ded?'<li><span>'+esc(ded)+'</span><span>'+esc(hon)+'</span></li>':'')+'</ul></div><div class="acct"><ul>'+rows+'</ul></div><p class="muted small">Once we are live, this is where you would follow each cause, download your receipt and copy your sponsor badge.</p><button type="button" class="btn ghost" data-again="1">Change my gift</button>';
     form.hidden=true; done.hidden=false;
   });
+  var dsel=document.getElementById('give-dedicate'); if(dsel) dsel.addEventListener('change',function(){root.querySelector('.dedicate-more').hidden=!dsel.value});
   draw();
+})();
+
+// Header drop-downs
+(function(){
+  var menus=[].slice.call(document.querySelectorAll('.menu'));
+  function closeAll(except){menus.forEach(function(m){if(m!==except){m.classList.remove('open');m.firstElementChild.setAttribute('aria-expanded','false')}})}
+  menus.forEach(function(m){
+    var b=m.firstElementChild;
+    b.addEventListener('click',function(e){e.stopPropagation();var o=!m.classList.contains('open');closeAll(m);m.classList.toggle('open',o);b.setAttribute('aria-expanded',o)});
+    m.addEventListener('mouseenter',function(){b.setAttribute('aria-expanded','true')});
+    m.addEventListener('mouseleave',function(){if(!m.classList.contains('open'))b.setAttribute('aria-expanded','false')});
+    [].forEach.call(m.querySelectorAll('a'),function(a){a.addEventListener('click',function(){closeAll();a.blur();m.style.pointerEvents='none';setTimeout(function(){m.style.pointerEvents=''},400)})});
+  });
+  document.addEventListener('click',function(){closeAll()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
 })();

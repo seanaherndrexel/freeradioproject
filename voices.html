@@ -5,10 +5,11 @@
 <link rel="icon" href="favicon.png" type="image/png"><meta name="theme-color" content="#0094B0"><link rel="canonical" href="https://freeradioproject.org/voices.html">
 <link rel="stylesheet" href="styles.css"></head><body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="bar"><div class="util"><div class="wrap"><a href="about.html">About</a><a href="about.html#contact">Contact us</a><a href="voices.html#badge">Sponsor badge</a></div></div><header class="wrap top"><a class="brand" href="index.html"><img src="logo.png" alt="The Free Radio Project" width="50" height="56"></a><nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="index.html#how">How it works</a><a href="index.html#faq">Questions</a><a href="sponsors.html">Sponsors</a></nav><div class="top-cta"><a class="btn small" href="apply.html">Get a free ad</a><a class="btn small dark" href="voices.html">Fund a voice</a></div></header></div>
+<div class="bar"><header class="wrap top"><a class="brand" href="index.html"><img src="logo.png" alt="The Free Radio Project" width="50" height="56"></a><nav class="nav" aria-label="Main"><div class="menu"><button type="button" aria-expanded="false">About</button><div class="sub"><a href="about.html">Our purpose</a><a href="index.html#how">How it works</a><a href="about.html#founder">Founder</a><a href="about.html#wont-air">What we won't air</a><a href="about.html#contact">Contact</a></div></div><div class="menu"><button type="button" aria-expanded="false">Get a Free Ad</button><div class="sub"><a href="index.html#who">Who qualifies</a><a href="apply.html">Apply</a><a href="apply.html#faq">Questions</a></div></div><div class="menu"><button type="button" aria-expanded="false">Sponsor</button><div class="sub"><a href="sponsors.html">Sponsor levels</a><a href="voices.html">Fund a voice</a><a href="sponsors.html#founding">Founding sponsors</a><a href="voices.html#badge">Sponsor badge</a></div></div></nav><div class="top-cta"><a class="btn small ghost" href="apply.html">Get a Free Ad</a><a class="btn small" href="voices.html">Fund a Voice</a></div></header></div>
 <main id="main"><div class="wrap crumb"><a href="index.html">Home</a><span aria-hidden="true">/</span>Fund a voice</div>
 <div class="wrap"><section>
-<h2>Fund a voice</h2>
+<img class="wide" src="img/talk.jpg" alt="Neighbors talking at a community event" width="2654" height="1473">
+<h2>Every gift moves a local voice closer to the air</h2>
 <p class="measure">Every cause below is waiting for its radio ad. It takes $250 to write, record and air one. Give any amount, choose where it goes, and watch the meter move. When a meter fills, that ad goes on the air.</p>
 <div class="preview-flag" role="note"><strong>Preview mode.</strong> We are not collecting money yet, and the causes shown are examples. Nothing you enter here is charged or saved.</div>
 <div class="give" id="give">
@@ -19,26 +20,37 @@
 <aside class="give-panel" aria-label="Your gift">
 <form id="give-form" novalidate>
 <h3>Your gift</h3>
+<div class="freq" role="group" aria-label="How often"><button type="button" data-freq="once" class="on">One-time</button><button type="button" data-freq="monthly">Monthly</button></div>
+<p class="muted small freq-note">Monthly gifts keep ads on the air all year.</p>
 <div class="amounts" role="group" aria-label="Amount">
 <button type="button" data-amt="25">$25</button><button type="button" data-amt="50">$50</button><button type="button" data-amt="100" class="on">$100</button><button type="button" data-amt="250">$250</button><button type="button" data-amt="500">$500</button><button type="button" data-amt="1000">$1,000</button>
 </div>
 <label class="custom">Or enter another amount<span class="money"><i>$</i><input id="give-custom" inputmode="decimal" autocomplete="off" placeholder="0"></span></label>
 <div class="give-split" aria-live="polite"></div>
+<label>Dedicate this gift<span>Optional</span><select name="dedicate" id="give-dedicate"><option value="">No dedication</option><option value="In honor of">In honor of someone</option><option value="In memory of">In memory of someone</option></select></label>
+<div class="dedicate-more" hidden><label>Their name<input name="honoree" autocomplete="off"></label><label>Send them an e-card<span>Optional. Enter an email and we will let them know.</span><input type="email" name="ecard" autocomplete="off"></label></div>
 <label>Your name<input name="name" autocomplete="name" required></label>
 <label>Email<input type="email" name="email" autocomplete="email" required></label>
 <label>Business or organization<span>Optional. We thank you by this name.</span><input name="organization" autocomplete="organization"></label>
 <button class="btn" type="submit">Preview my sponsorship</button>
-<p class="muted small">Giving creates your sponsor account, where you can follow each cause you funded.</p>
+<p class="muted small">Once we are live, your gift will open a sponsor account where you can follow each cause you funded.</p>
 <p class="status" role="status"></p>
 </form>
 <div class="give-done" hidden></div>
+<div class="confidence"><h4>Give with confidence</h4><ul><li>You choose the cause your money goes to.</li><li>We approve every script before it airs.</li><li>We are being formed as a Pennsylvania nonprofit and will apply to the IRS for 501(c)(3) status.</li><li>We take no payments until that is in place.</li></ul></div>
 </aside>
 </div>
-<h3>What happens after you give</h3>
+<h3>What happens after you give, once we are live</h3>
 <ol class="steps"><li><h3>Your account opens</h3><p>Your gift creates a sponsor account that lists every cause you chose and how close each one is to airing.</p></li><li><h3>The meter moves</h3><p>Your money is held for the causes you picked. Big or small, every gift pushes a meter toward full.</p></li><li><h3>The ad airs</h3><p>When a cause reaches $250, we write the ad with them, record it and book the airtime.</p></li><li><h3>You hear back</h3><p>We email you when each ad goes on the air, with your sponsor badge and a report of the results.</p></li></ol>
 <div class="note measure">You choose the causes, and we approve every script before it airs, so your name only ever sits beside an ad you would be proud of.</div>
-<h3 id="onair">On the air now</h3>
-<div class="voices" data-voices="onair"></div>
+<h3 id="faq">Questions about giving</h3>
+<div class="faq measure">
+<details open><summary>Can I choose where my money goes?</summary><p>Yes. You pick the causes, and your gift is split between them. If you don't pick, it goes to whichever cause has waited longest.</p></details>
+<details><summary>What does $250 pay for?</summary><p>It pays for one cause's ad from start to finish: the script, the recording and the airtime.</p></details>
+<details><summary>Will listeners hear my name?</summary><p>Yearly sponsors at the Supporter level and above are thanked by name on the air. A one-time gift puts your name on that ad's story page.</p></details>
+<details><summary>Is my gift tax-deductible?</summary><p>Not yet. We're being formed as a Pennsylvania nonprofit and will apply to the IRS for 501(c)(3) status, and we won't take any payments until that is in place.</p></details>
+</div>
+<p class="measure">Would you rather talk it through first? <a href="sponsors.html#ask">Send a sponsor inquiry</a> and we'll call or email you within two business days.</p>
 <h3 id="badge">The sponsor badge</h3>
 <p class="measure">Every sponsor gets this badge by email. Paste the code into your website and it links back to the causes you paid for.</p>
 <p><img class="badge" src="badge.svg" alt="Proud sponsor of The Free Radio Project" width="260" height="84"></p>
@@ -47,8 +59,8 @@
 <div class="ticker" aria-hidden="true"><div><span>Airtime, On Us</span><span>Broadcasting Powered By Good People</span><span>Airtime, On Us</span><span>Broadcasting Powered By Good People</span><span>Airtime, On Us</span><span>Broadcasting Powered By Good People</span><span>Airtime, On Us</span><span>Broadcasting Powered By Good People</span><span>Airtime, On Us</span><span>Broadcasting Powered By Good People</span><span>Airtime, On Us</span><span>Broadcasting Powered By Good People</span></div></div>
 <footer><div class="wrap"><div class="cols">
 <div><a class="brand" href="index.html"><img src="logo-white.png" alt="" width="58" height="64">The Free Radio Project</a><p>Empowering local voices with free airtime, powered by sponsors who care.</p><p>152 N Main Street<br>Doylestown, PA 18901</p></div>
-<div><h4>For causes</h4><ul><li><a href="apply.html">Get a free ad</a></li><li><a href="index.html#how">How it works</a></li><li><a href="index.html#faq">Questions</a></li></ul></div>
-<div><h4>For sponsors</h4><ul><li><a href="sponsors.html">Sponsor levels</a></li><li><a href="voices.html">Fund a voice</a></li><li><a href="voices.html#badge">Sponsor badge</a></li><li><a href="sponsors.html#ask">Ask about sponsoring</a></li></ul></div>
+<div><h4>For causes</h4><ul><li><a href="apply.html">Get a free ad</a></li><li><a href="index.html#how">How it works</a></li><li><a href="index.html#who">Who qualifies</a></li><li><a href="apply.html#faq">Questions</a></li></ul></div>
+<div><h4>For sponsors</h4><ul><li><a href="sponsors.html">Sponsor levels</a></li><li><a href="voices.html">Fund a voice</a></li><li><a href="voices.html#badge">Sponsor badge</a></li><li><a href="sponsors.html#founding">Founding sponsors</a></li><li><a href="sponsors.html#ask">Ask about sponsoring</a></li></ul></div>
 <div><h4>Organization</h4><ul><li><a href="about.html">About us</a></li><li><a href="about.html#contact">Contact us</a></li><li><a href="privacy.html">Privacy</a></li></ul></div>
-</div><small>The Free Radio Project is being formed as a Pennsylvania nonprofit corporation and will apply to the IRS for 501(c)(3) status. Until the IRS approves that application, we cannot promise that a gift is tax-deductible, and we are not accepting payments yet. &copy; 2026 The Free Radio Project.</small></div></footer>
+</div><p class="legal"><a href="privacy.html">Privacy</a><a href="about.html#wont-air">What we won't air</a><a href="about.html#contact">Contact</a></p><small>The Free Radio Project is being formed as a Pennsylvania nonprofit corporation and will apply to the IRS for 501(c)(3) status. Until the IRS approves that application, we cannot promise that a gift is tax-deductible, and we are not accepting payments yet. &copy; 2026 The Free Radio Project.</small></div></footer>
 <script>window.HMFF_FORM_ENDPOINT="";window.FRP_VOICES={waiting:[],onair:[]};</script><script src="site.js"></script></body></html>
