@@ -476,3 +476,4 @@ section{padding-block:clamp(3rem,6vw,4.75rem)}
 .hero-full .hero-bg{object-position:30% 20%}
 .hero-full .hero-bg{object-position:74% 20%}
 @media (max-width:900px){.hero-full .hero-bg{object-position:45% 20%}}
+@media (min-width:1400px){.hero-full .hero-bg{object-position:100% 20%}}
