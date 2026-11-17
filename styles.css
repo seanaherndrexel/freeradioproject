@@ -563,3 +563,10 @@ footer .legal a{color:#BFD9DF}
 @media (max-width:900px){.signup .wrap{grid-template-columns:1fr;gap:1.25rem}.story-cards{grid-template-columns:1fr 1fr}}
 .top .brand img{width:40px;height:auto}
 .top{padding-block:.55rem}
+
+/* hero: photo on the right, headline card on the left so no face is covered */
+@media (min-width:901px){
+  .hero-full picture{left:44%}
+  .hero-full picture .hero-bg{object-position:50% 18%}
+  .hero-full .hero-card{margin-left:0;margin-right:auto}
+}
