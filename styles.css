@@ -561,3 +561,5 @@ footer .legal a{color:#BFD9DF}
 .story audio{width:100%}
 .story .meta{margin:.5rem 0 0;font-family:var(--ui);font-size:.78rem;color:var(--slate)}
 @media (max-width:900px){.signup .wrap{grid-template-columns:1fr;gap:1.25rem}.story-cards{grid-template-columns:1fr 1fr}}
+.top .brand img{width:40px;height:auto}
+.top{padding-block:.55rem}
