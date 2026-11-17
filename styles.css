@@ -611,3 +611,10 @@ footer .legal a{color:#BFD9DF}
   .hero-actions-in{grid-template-columns:1fr;padding-inline:1.25rem}
   .act-link{text-align:center}
 }
+
+.util a{border-bottom:0!important;box-shadow:none!important;background-image:none!important;text-decoration:none}
+@media (min-width:901px){
+  .bar .top{max-width:82vw;padding-inline:1rem}
+  .hero-full .hero-card{max-width:37vw}
+  .hero-full .hero-card h1{font-size:clamp(1.9rem,3.3vw,3.6rem);text-wrap:initial}
+}
