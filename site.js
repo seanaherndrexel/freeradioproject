@@ -27,8 +27,8 @@
       new FormData(f).forEach(function(v,k){if(k!=='website')data[k]=v});
       if(!ENDPOINT){s.className='status err';s.textContent='This form is not connected yet. Please try again soon.';return}
       btn.disabled=true;s.className='status';s.textContent='Sending.';
-      fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-        .then(function(r){if(!r.ok)throw 0;f.reset();s.className='status ok';s.textContent=f.dataset.done||'Sent. We will be in touch.'})
+      fetch(ENDPOINT,{method:'POST',mode:'no-cors',body:new URLSearchParams(data)})
+        .then(function(){f.reset();s.className='status ok';s.textContent=f.dataset.done||'Sent. We will be in touch.'})
         .catch(function(){s.className='status err';s.textContent='That did not send. Check your connection and send it again.'})
         .then(function(){btn.disabled=false});
     });
@@ -182,4 +182,14 @@
   });
   document.addEventListener('click',function(){closeAll()});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll()});
+})();
+
+// Stories band: stays hidden until real ads are listed in FRP_VOICES.onair
+(function(){
+  var sec=document.querySelector('[data-stories]'), list=(window.FRP_VOICES||{}).onair||[]; if(!sec||!list.length) return;
+  function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML}
+  sec.querySelector('.story-cards').innerHTML=list.slice(0,4).map(function(v){
+    return '<article class="story">'+(v.photo?'<img loading="lazy" src="'+esc(v.photo)+'" alt="'+esc(v.name)+'">':'')+'<div><p class="quote">'+esc(v.quote||v.message)+'</p><h3>'+esc(v.name)+'</h3>'+(v.audio?'<audio controls preload="none" src="'+esc(v.audio)+'"></audio>':'')+(v.sponsor?'<p class="meta">Airtime paid for by '+esc(v.sponsor)+'</p>':'')+'</div></article>';
+  }).join('');
+  sec.hidden=false;
 })();

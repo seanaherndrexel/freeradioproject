@@ -540,3 +540,24 @@ footer .legal a{color:#BFD9DF}
 @media (max-width:420px){.promo-tile{grid-template-columns:6.5rem 1fr}.top-cta .btn.small{font-size:.76rem;padding:.45rem .55rem}}
 .way>img,.way-badge{flex:none;height:9.5rem;aspect-ratio:auto}
 .way-cards{align-items:stretch}
+
+/* email signup band */
+.signup{background:#E9EEF0;padding-block:clamp(2.5rem,5vw,3.5rem)}
+.signup .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:2.5rem;align-items:start}
+.signup h2{margin:0 0 .6rem;font-size:clamp(1.4rem,2.4vw,1.9rem)}
+.signup p{margin:0;color:var(--slate)}
+.signup form{max-width:none;margin:0;padding:0;border:0;background:none}
+.signup .two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.signup label.check{display:flex;gap:.6rem;align-items:flex-start;font-weight:500;font-size:.9rem}
+.signup label.check input{width:auto;margin:.2rem 0 0;flex:none}
+.signup label.check span{color:var(--ink);font-size:.9rem;margin:0}
+/* stories */
+.story-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:1.5rem}
+.story{background:#fff;border:1px solid var(--line);border-radius:.5rem;overflow:hidden}
+.story img{display:block;width:100%;height:9.5rem;object-fit:cover}
+.story>div{padding:.9rem 1rem 1.1rem}
+.story .quote{margin:0 0 .5rem;font-size:.92rem;color:var(--slate)}
+.story h3{margin:0 0 .6rem;font-size:1.02rem;color:var(--teal-dark)}
+.story audio{width:100%}
+.story .meta{margin:.5rem 0 0;font-family:var(--ui);font-size:.78rem;color:var(--slate)}
+@media (max-width:900px){.signup .wrap{grid-template-columns:1fr;gap:1.25rem}.story-cards{grid-template-columns:1fr 1fr}}
